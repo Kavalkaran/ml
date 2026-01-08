@@ -276,15 +276,23 @@ async function showScreenshot(url, report) {
 }
 
 </script>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-NTQMM89B9F"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script>
+  // Prefill URL input if query parameter exists
+function getQueryParam(name) {
+  const params = new URLSearchParams(window.location.search);
+  return params.get(name);
+}
 
-  gtag('config', 'G-NTQMM89B9F');
+const prefillUrl = getQueryParam('url');
+if (prefillUrl) {
+  const urlInput = document.getElementById('urlInput');
+  urlInput.value = decodeURIComponent(prefillUrl);
+  // Optionally auto-run the check
+  document.getElementById('checkBtn').click();
+}
+
 </script>
 </body>
 </html>
+
 
