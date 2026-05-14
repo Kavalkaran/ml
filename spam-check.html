@@ -4,99 +4,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>🔐 കാവൽ++ – ലിങ്ക് സുരക്ഷാ പരിശോധന</title>
+  <title>🔐 Kavalkaran | Check Link Safety in malayalam</title>
   <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="css/link.css" />
+  <link rel="shortcut icon" href="icon/favicon.ico" type="image/x-icon">
+  <meta name="description" content="Check safety of link malayalam website | Kavalkaran">
+  <meta name="keywords" content="athulweb kavalkaran, alpam cyber sharanam kavalkaran, kavalkaran - alpam cyber sharanam">
+  <meta property="og:title" content="Kavalkaran | cyber security | malayalam website">
+  <meta property="og:description" content="Kavalkaran alpam cyber sharanam">
+  <meta name="robots" content="index">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Malayalam&display=swap" rel="stylesheet" />
-  <style>
-body {
-  background: #0f172a;
-  color: #f1f5f9;
-  font-family: 'Noto Sans Malayalam', 'Segoe UI', sans-serif;
-  padding: 20px;
-  text-align: center;
-}
-
-h1 {
-  color: #00ffae;
-  font-size: 2rem;
-  margin-bottom: 10px;
-}
-
-.input-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-input,
-button {
-  padding: 12px;
-  margin: 10px;
-  font-size: 1rem;
-  border: none;
-  border-radius: 8px;
-  width: 80%;
-  max-width: 500px;
-  transition: all 0.3s ease;
-}
-
-input {
-  background: #334155;
-  color: #f8fafc;
-}
-input:focus {
-  outline: 2px solid #00ffae;
-}
-
-button {
-  background: #00ffae;
-  color: #0f172a;
-  cursor: pointer;
-}
-button:hover {
-  background: #5effc3;
-}
-
-#report {
-  text-align: left;
-  background: #1e293b;
-  padding: 20px;
-  border-radius: 10px;
-  margin-top: 20px;
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.safe {
-  color: #00ff7f;
-}
-.danger {
-  color: #ff4f4f;
-}
-.warn {
-  color: #ffdf00;
-}
-
-pre {
-  white-space: pre-wrap;
-  word-wrap: break-word;
-}
-
-img {
-  max-width: 100%;
-  border-radius: 6px;
-  margin-top: 10px;
-}
-
-#loader {
-  color: #ffdf00;
-  font-weight: bold;
-  margin-top: 15px;
-}
-
-  </style>
 </head>
 
 <body>
@@ -109,9 +26,53 @@ img {
   </div>
 
   <div id="loader" hidden>⏳ പരിശോധിക്കുന്നു...</div>
+
+  <section id="notice"></section>
+
   <div id="report"></div>
 
 <script>
+
+  function showPremiumNotice() {
+  const notice = document.getElementById('notice');
+
+  notice.innerHTML = `
+  <section style="margin-top:20px;padding:15px;border:2px dashed #ff9800;border-radius:10px;background:#fff8e6;font-family:Arial,sans-serif;">
+
+    <h3 style="color:#e65100;margin-bottom:10px;">⚠️ Important Notice</h3>
+
+    <p style="font-size:14px;color:#333;line-height:1.5;">
+      These scan results are <b>not fully accurate</b> and are for <b>basic testing only</b>.
+      This free version does <b>not guarantee full protection</b> against phishing or malware.
+    </p>
+
+    <p style="font-size:14px;color:#333;line-height:1.5;">
+      For advanced protection and real-time threat detection, upgrade to our
+      <b>Premium Scanner</b>.
+    </p>
+
+    <div style="margin-top:12px;padding:12px;background:#fff;border-radius:8px;border:1px solid #ffcc80;">
+      <p style="margin:0;font-size:14px;color:#444;">
+        🔐 <b>Premium Features:</b><br>
+        • Advanced malware detection<br>
+        • Real-time AI scanning<br>
+        • High accuracy safety reports<br>
+        • Security updates priority
+      </p>
+    </div>
+
+    <p style="margin-top:12px;font-size:15px;color:#d84315;">
+      💰 Limited Offer: Only <b>₹200</b>
+    </p>
+
+    <button onclick="window.location.href='https://about.kavalkaran.in/pricing.html'" 
+      style="margin-top:10px;padding:10px 15px;background:#ff6f00;color:white;border:none;border-radius:6px;cursor:pointer;font-weight:bold;">
+      Upgrade Now
+    </button>
+
+  </section>
+  `;
+}
 
 document.getElementById('checkBtn').addEventListener('click', checkURL);
 
@@ -123,6 +84,11 @@ async function checkURL() {
 
   report.innerHTML = '';
   loader.hidden = false;
+
+
+  // 👇 SHOW NOTICE ONLY WHEN USER CLICKS SCAN
+  showPremiumNotice();
+
 
   if (!isValidURL(url)) {
     showError("⚠️ ദയവായി സാധുവായ https:// ലിങ്ക് നൽകൂ.", "warn", report, loader);
